@@ -54,7 +54,7 @@ h4 {
 
 .container-body {
     max-height: 550px;
-    max-width: 1200px;
+    max-width: 1000px;
     overflow-x: scroll;
     overflow-y: hidden;
 }
