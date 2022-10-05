@@ -65,6 +65,7 @@ function roll(){
     }
 }
 
+
 function myFunction(x) {
   if (x.matches) { // If media query matches
     shown = 913;
