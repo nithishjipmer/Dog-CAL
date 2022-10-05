@@ -3,6 +3,7 @@ var prince;
 var n = 0;
 var imgWidth = 210;
 var imgHeight = 300;
+var shown = 1000;
 const scroll = document.getElementById("scroll-element");
 
 
@@ -54,7 +55,7 @@ function instill() {
 }
 function animate(){
     // ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
-    ctx.drawImage(imgTag, canvas.width/2 + 1200 - 1.5*imgWidth, 30, imgWidth, imgHeight); // draw image at current position
+    ctx.drawImage(imgTag, canvas.width/2 + shown - imgWidth, 30, imgWidth, imgHeight); // draw image at current position
     ctx.drawImage(imgTag, x, y); // draw image at current position
 }
 function roll(){
@@ -63,3 +64,15 @@ function roll(){
         requestAnimationFrame(roll);
     }
 }
+
+function myFunction(x) {
+  if (x.matches) { // If media query matches
+    shown = 913;
+    } else {
+    // document.body.style.backgroundColor = "pink";
+    }
+}
+
+var x = window.matchMedia("(max-width: 1024px)")
+myFunction(x) // Call listener function at run time
+x.addListener(myFunction) // Attach listener function on state changes
