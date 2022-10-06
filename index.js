@@ -49,7 +49,6 @@ rdm = Math.floor(Math.random() * 13);
 correctAns = table.options[rdm].text;
 
 function instill() {
-    document.getElementById("answer-btn").innerText = shown;
 
     prince = table.options[table.selectedIndex].text;
     document.getElementById("selected").value = prince;
