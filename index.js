@@ -69,9 +69,8 @@ function roll(){
 function myFunction(x) {
   if (x.matches) { // If media query matches
     shown = 913;
-    document.body.style.backgroundColor = "pink";
     } else {
-    document.body.style.backgroundColor = "yellow";
+//     document.body.style.backgroundColor = "yellow";
     }
 }
 
