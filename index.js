@@ -3,7 +3,7 @@ var prince;
 var n = 0;
 var imgWidth = 210;
 var imgHeight = 300;
-var shown = 1000;
+var shown = 913;
 const scroll = document.getElementById("scroll-element");
 
 
