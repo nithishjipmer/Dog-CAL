@@ -71,7 +71,7 @@ function myFunction(x) {
     shown = 913;
     document.body.style.backgroundColor = "pink";
     } else {
-    // document.body.style.backgroundColor = "pink";
+    document.body.style.backgroundColor = "yellow";
     }
 }
 
