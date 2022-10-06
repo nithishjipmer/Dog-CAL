@@ -180,7 +180,8 @@ function animate(){
         ctx.fillText("Unknown", textX, textY);
       }
     }
-    setTimeout(roll, 300)
+//     setTimeout(roll, 300)
+  roll()
     
 }
 
