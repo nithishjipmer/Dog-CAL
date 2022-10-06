@@ -19,8 +19,7 @@ prince = table.options[table.selectedIndex].text;
 function instill() {
     document.getElementById("selected").value = prince;
     n += 1;
-    scroll.scrollLeft = canvas.width / 2 + imgWidth * (n-1);
-    roll()
+    
     imgTag = new Image();
     
     ctx.translate(imgWidth, 0)
@@ -52,6 +51,8 @@ function instill() {
       imgTag.src = "images/atr.jpg"; // load image
     }
     imgTag.onload = animate;
+    scroll.scrollLeft = canvas.width / 2 + imgWidth * (n-1);
+    roll()
 }
 function animate(){
     // ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
