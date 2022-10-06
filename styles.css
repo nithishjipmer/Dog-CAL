@@ -1,0 +1,78 @@
+body {
+    overflow-x: hidden !important;
+    /* overflow-y: hidden; */
+    /* Hide horizontal scrollbar */
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+h1,
+h4 {
+    color: black;
+}
+
+/* navbar */
+
+.navbar-brand {
+    padding-left: 10%;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.nav-item {
+    padding: 0 45px 0 0;
+}
+
+.nav-right {
+    padding-right: 9%;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white !important;
+    font-weight: 400;
+}
+
+/* adds a margin around the divs used! */
+.boxed {
+    border: 2px solid black;
+    margin: 1%;
+    padding: 0;
+}
+
+
+.container-body {
+    max-height: 550px;
+    max-width: 1000px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.mid1, .mid2 {
+    padding: 1.5%;
+    flex-direction: column;
+}
+
+.mid1 p {
+    line-height: 1.5;
+    font-size: x-large;
+}
+.mid2 label {
+    line-height: 1.5;
+    font-size: x-large;
+}
+
+.mid1 input{
+    margin-right: 1%;
+}
