@@ -55,7 +55,7 @@ function instill() {
 }
 function animate(){
     // ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
-    ctx.drawImage(imgTag, canvas.width/2 + shown - 1.5*imgWidth, 30, imgWidth, imgHeight); // draw image at current position
+    ctx.drawImage(imgTag, canvas.width/2 + shown - imgWidth, 30, imgWidth, imgHeight); // draw image at current position
     ctx.drawImage(imgTag, x, y); // draw image at current position
 }
 function roll(){
@@ -68,7 +68,7 @@ function roll(){
 
 function myFunction(x) {
   if (x.matches) { // If media query matches
-    shown = 913;
+    shown = 905;
     } else {
     // document.body.style.backgroundColor = "pink";
     }
