@@ -27,7 +27,6 @@ function mediaqueryresponse(mql) {
   if (mqls[0].matches) {
     // ipad query matched
     shown = 911;
-    imgWidth = 200px;
   }
   if (mqls[1].matches) {
     // ipad pro query matched
