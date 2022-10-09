@@ -42,6 +42,7 @@ document.getElementById("answer-btn").disabled = true;
 var phe
 var atr
 var mep
+var cim
 var pro
 var rdm 
 var correctAns;
@@ -104,7 +105,10 @@ function instill() {
           imgTag.src = "images/ach.jpg"; // load image
         }
       } else if (table.selectedIndex == 7) {
-        if (mep == 1) {
+        if(mep == 1 && cim == 1){
+          imgTag.src = "images/flat.jpg"; // load image
+        } else if
+        (mep == 1 || cim == 1) {
           imgTag.src = "images/his2.jpg"; // load image
         } else {
           imgTag.src = "images/his.jpg"; // load image
@@ -123,7 +127,7 @@ function instill() {
         pro = 1;
       } else if (table.selectedIndex == 11) {
         imgTag.src = "images/flat.jpg"; // load image
-        mep = 1;
+        cim = 1;
       } else if (table.selectedIndex == 12) {
         imgTag.src = "images/flat.jpg"; // load image
         mep = 1;
@@ -204,6 +208,7 @@ function cleared(){
   atr = 0;
   mep = 0;
   pro = 0;
+  cim = 0;
 }
 
 function answer(){
