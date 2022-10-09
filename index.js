@@ -1,9 +1,9 @@
 var table;
 var prince;
 var n = 0;
-var imgWidth = 210;
-var imgHeight = 300;
 var shown = 1000;
+var imgWidth = shown/5;
+var imgHeight = 300;
 var king;
 
 
