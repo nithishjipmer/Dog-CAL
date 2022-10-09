@@ -2,7 +2,7 @@ var table;
 var prince;
 var n = 0;
 var shown = 1000;
-var imgWidth = shown/5;
+var imgWidth = 210;
 var imgHeight = 300;
 var king;
 
@@ -27,6 +27,7 @@ function mediaqueryresponse(mql) {
   if (mqls[0].matches) {
     // ipad query matched
     shown = 911;
+    imgWidth = 200;
   }
   if (mqls[1].matches) {
     // ipad pro query matched
