@@ -1,52 +1,23 @@
 var table;
 var prince;
 var n = 0;
-var shown = 911;
+var shown = 1000;
 var imgWidth = 210;
 var imgHeight = 300;
 var king;
 
 
 /// responsive
-// var mqls = [
-//   window.matchMedia(
-//     "(min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)"
-//   ),
-//   window.matchMedia(
-//     "(min-device-width: 1112px) and (max-device-width: 1112px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)"
-//   ),
-//   window.matchMedia(
-//     "(min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)"
-//   ),
-//   window.matchMedia(
-//     "(min-device-width: 1180px) and (max-device-width: 1180px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)"
-//   ),
-// ];
+function myFunction(x) {
+  if (x.matches) { // If media query matches
+    shown = 913;
+    imgWidth = 200;
+    }
+}
+var x = window.matchMedia("(max-width: 1366px)");
+myFunction(x) // Call listener function at run time
+x.addListener(myFunction) // Attach listener function on state changes
 
-// function mediaqueryresponse(mql) {
-//   if (mqls[0].matches) {
-//     // ipad query matched
-//     shown = 911;
-//     imgWidth = 200;
-//   }
-//   if (mqls[1].matches) {
-//     // ipad pro query matched
-//     shown = 911;
-//   }
-//   if (mqls[2].matches) {
-//     // for ipad pro 12.9' query matched
-//     shown = 911;
-//   }
-//   if (mqls[1].matches) {
-//     // ipad air
-//     shown = 911;
-//   }
-// }
-
-// for (var i = 0; i < mqls.length; i++) {
-//   mediaqueryresponse(mqls[i]); // call listener function explicitly at run time
-//   mqls[i].addListener(mediaqueryresponse); // attach listener function to listen in on state changes
-// }
 
 
 
@@ -253,3 +224,4 @@ function answer(){
   }
   document.getElementById("final-save").style.display = "none";
 }
+
