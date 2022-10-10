@@ -1,227 +1,185 @@
+var shown = 750;
 var table;
-var prince;
+table = document.getElementById("drugtable");
 var n = 0;
-var shown = 1000;
-var imgWidth = 210;
-var imgHeight = 300;
-var king;
+var m = 0;
+var imgWidth = 200;
+var imgHeight = 244;
+var king = 0; // except stop everywhere 1
+var queen = 0; // only while base is running
+var unk = 0;
+var rdm = 0;
+var correctAns;
+var don = 1;
+var baseWidth = imgWidth/5;
+var pro = 0;
+var atr = 0;
+var iso = 0;
+rdm = Math.floor(Math.random() * 8);
+correctAns = correctAns = table.options[rdm].text;
+const stopBtn = document.getElementById("stop-btn")
+const progress = document.getElementById("bar");
 
-
-/// responsive
+// responsive
 function myFunction(x) {
   if (x.matches) { // If media query matches
-    shown = 913;
-    imgWidth = 200;
+    shown = 580;
+    don = 2;
     }
 }
 var x = window.matchMedia("(max-width: 1180px)");
 myFunction(x) // Call listener function at run time
 x.addListener(myFunction) // Attach listener function on state changes
 
-
-
-
-
-table = document.getElementById("drugtable");
-
+const canvas = document.getElementById("canvas");
+ctx = canvas.getContext("2d");
+imgTag = new Image();
 
 const scroll = document.getElementById("scroll-element");
-var canvas = document.getElementById("canvas"),
-  ctx = canvas.getContext("2d"); 
-window,onload = function(){
-  scroll.scrollLeft = canvas.width / 4;
-}
-var textX = canvas.width / 4 + shown - imgWidth + 0
-var textY = 250
-var imgX = canvas.width / 4 + shown - imgWidth;
-var imgY = 0;
-
-
-document.getElementById("answer-btn").disabled = true;
-
-
-var phe
-var atr
-var mep
-var cim
-var pro
-var rdm 
-var correctAns;
-possibleUnknowns = [4, 5, 7, 9, 10, 13]
-rdm = possibleUnknowns[Math.floor(Math.random() * possibleUnknowns.length)];
-correctAns = table.options[rdm].text;
 
 function instill() {
-    prince = table.options[table.selectedIndex].text;
-    document.getElementById("selected").value = prince;
-    n += 1;
-    
-    imgTag = new Image();
-    
-    ctx.translate(imgWidth-1, 0)
-    // data about the graphs
-    perform()
-    function perform(){
-      if (table.selectedIndex == 0) {
-        if (phe == 1) {
-          imgTag.src = "images/flat.jpg"; // load image
-        } else {
-          imgTag.src = "images/co.jpg"; // load image
-        }
-      } else if (table.selectedIndex == 1) {
-          if (phe == 1) {
-            imgTag.src = "images/flat.jpg"; // load image
-          } else {
-            imgTag.src = "images/cv.jpg"; // load image
-          }
-      } else if (table.selectedIndex == 2) {
-          if (phe == 1) {
-            imgTag.src = "images/flat.jpg"; // load image
-          } else {
-            imgTag.src = "images/pv.jpg"; // load image
-          }
-      } else if (table.selectedIndex == 3) {
-        if (phe == 1) {
-          imgTag.src = "images/epi2.jpg"; // load image
-        } else {
-          imgTag.src = "images/epi.jpg"; // load image
-        }
-      } else if (table.selectedIndex == 4) {
-        if (phe == 1) {
-          imgTag.src = "images/atr.jpg"; // load image
-        } else {
-          imgTag.src = "images/nepi.jpg"; // load image
-        }
-      } else if (table.selectedIndex == 5) {
-        imgTag.src = "images/iso.jpg"; // load image
-        if (pro == 1) {
-          imgTag.src = "images/flat.jpg"; // load image
-        } else {
-          imgTag.src = "images/iso.jpg"; // load image
-        }
-      } else if (table.selectedIndex == 6) {
-        if (atr == 1) {
-          imgTag.src = "images/flat.jpg"; // load image
-        } else {
-          imgTag.src = "images/ach.jpg"; // load image
-        }
-      } else if (table.selectedIndex == 7) {
-        if(mep == 1 && cim == 1){
-          imgTag.src = "images/flat.jpg"; // load image
-        } else if
-        (mep == 1 || cim == 1) {
-          imgTag.src = "images/his2.jpg"; // load image
-        } else {
-          imgTag.src = "images/his.jpg"; // load image
-        }
-      } else if (table.selectedIndex == 8) {
-        if (phe == 1) {
-          imgTag.src = "images/eph2.jpg"; // load image
-        } else {
-          imgTag.src = "images/eph.jpg"; // load image
-        }
-      } else if (table.selectedIndex == 9) {
-        imgTag.src = "images/phe.jpg"; // load image
-        phe = 1;
-      } else if (table.selectedIndex == 10) {
-        imgTag.src = "images/pro.jpg"; // load image
-        pro = 1;
-      } else if (table.selectedIndex == 11) {
-        imgTag.src = "images/flat.jpg"; // load image
-        cim = 1;
-      } else if (table.selectedIndex == 12) {
-        imgTag.src = "images/flat.jpg"; // load image
-        mep = 1;
-      } else if (table.selectedIndex == 13) {
-        imgTag.src = "images/atr.jpg"; // load image
-        atr = 1;
-      } else if (table.selectedIndex == 14) {
-        table.selectedIndex = rdm;
-        king = 1;
-        document.getElementById("selected").value = "Unknown";
-        // table.options[table.selectedIndex].text = "Unknown";
-        document.getElementById("answer-btn").disabled = false;
-        perform();
-      }
-    }
-    
-    // when the image is ready
-    imgTag.onload = animate;
-    scroll.scrollLeft = canvas.width / 4 + imgWidth * (n - 1);
+  stopBtn.disabled = false;
+  stopBtn.innerText = "Skip";
+  queen = 0;
+  king = 1;
+  n += 1;
+  if (unk == 1) {
+    table.selectedIndex = rdm;
+  }
+  scroll.scrollLeft = imgWidth * (n - 1) + baseWidth * m;
+  perform();
+  imgTag.onload = animate;
+  
 }
 
-// adds the image to the canvas
-function animate(){
-    ctx.drawImage(imgTag, imgX, imgY, imgWidth, imgHeight); // draw image at current position
-    ctx.font = "20px Calibri";
-    ctx.fillStyle = "red";
-    // names of the drug
-    if (king == 1){
-      ctx.fillText("Unknown", textX, textY);
-      king = 0;
-      table.selectedIndex = 14;
+function perform() {
+  if (table.selectedIndex == 0) {
+    imgTag.src = "images/F-epi.jpg";
+  } else if (table.selectedIndex == 1) {
+    imgTag.src = "images/F-nepi.jpg";
+  } else if (table.selectedIndex == 2) {
+    if (pro == 1){
+      imgTag.src = "images/base.png";
+      iso = 1;
+      n -= 1;
+      m += 1;
+      queen = 1;
+    }else{
+      imgTag.src = "images/F-iso.jpg";
+    }
+    
+  } else if (table.selectedIndex == 3) {
+    imgTag.src = "images/F-ca.jpg";
+  } else if (table.selectedIndex == 4) {
+    imgTag.src = "images/F-pro.jpg";
+    pro = 1;
+  } else if (table.selectedIndex == 5) {
+    if (atr == 1) {
+      imgTag.src = "images/F-ach2.jpg";
     } else {
-      if (table.selectedIndex == 3) {
-        ctx.fillText("Epi", textX, textY);
-      } else if (table.selectedIndex == 0) {
-        ctx.fillText("CO", textX, textY);
-      } else if (table.selectedIndex == 1) {
-        ctx.fillText("CV", textX, textY);
-      } else if (table.selectedIndex == 2) {
-        ctx.fillText("PV", textX, textY);
-      } else if (table.selectedIndex == 4) {
-        ctx.fillText("Nepi", textX, textY);
-      } else if (table.selectedIndex == 5) {
-        ctx.fillText("Iso", textX, textY);
-      } else if (table.selectedIndex == 6) {
-        ctx.fillText("Ach", textX, textY);
-      } else if (table.selectedIndex == 7) {
-        ctx.fillText("His", textX, textY);
-      } else if (table.selectedIndex == 8) {
-        ctx.fillText("Eph", textX, textY);
-      } else if (table.selectedIndex == 9) {
-        ctx.fillText("Phe", textX, textY);
-      } else if (table.selectedIndex == 10) {
-        ctx.fillText("Pro", textX, textY);
-      } else if (table.selectedIndex == 11) {
-        ctx.fillText("Cim", textX, textY);
-      } else if (table.selectedIndex == 12) {
-        ctx.fillText("Mep", textX, textY);
-      } else if (table.selectedIndex == 13) {
-        ctx.fillText("Atr", textX, textY);
-      } else if (table.selectedIndex == 14) {
-        ctx.fillText("Unknown", textX, textY);
-      }
+      imgTag.src = "images/F-ach.jpg";
     }
-    roll()
+  } else if (table.selectedIndex == 6) {
+    imgTag.src = "images/F-kcl.jpg";
+  } else if (table.selectedIndex == 7) {
+    imgTag.src = "images/F-atr.jpg";
+    atr = 1;
+  }
 }
 
-// mech of moving
-function roll(){
-    scroll.scrollLeft += 5;
-    if (scroll.scrollLeft < canvas.width/4 + imgWidth*n){
+function animate() {
+  if (queen == 0){
+    ctx.translate(imgWidth, 0);
+    ctx.drawImage(imgTag, shown - imgWidth + 10, 0, imgWidth, imgHeight);
+  }else {
+    ctx.translate(baseWidth, 0);
+    ctx.drawImage(imgTag, shown - baseWidth + 10, 0, baseWidth, imgHeight);
+  }
+  if (iso == 1){
+    ctx.font = "15px Georgia";
+    ctx.fillStyle = "white";
+    ctx.fillText("↑", shown - imgWidth + 128, 195);
+    ctx.fillText("Iso", shown - imgWidth + 120, 220);
+    ctx.fillText("↑", shown - imgWidth + 170, 165);
+    ctx.fillText("HR71", shown - imgWidth + 145, 190);
+  }
+  if (unk == 1 && queen == 0) {
+    ctx.fillStyle = "black";
+    ctx.fillRect(shown - imgWidth + 15, 200, 60, 30);
+    ctx.font = "15px Georgia";
+    ctx.fillStyle = "white";
+    ctx.fillText("Unk", shown - imgWidth + 18, 220);
+  }
+
+  roll();
+}
+const fps = 10;
+function roll() {
+  scroll.scrollLeft += 1;
+  if (scroll.scrollLeft < imgWidth * n + baseWidth*m) {
+    let diff = imgWidth * n + baseWidth * m - scroll.scrollLeft;
+    if (diff < don && king == 1) {
+      pro = 0;
+      atr = 0;
+      iso = 0;
+      setTimeout(() => {
+        run();
+      }, 1000 / fps);
+    }
+    
+    if (queen == 0) {
+      progress.value = diff / imgWidth;
+    } else {
+      progress.value = 0;
+    }
+    
+      setTimeout(() => {
         requestAnimationFrame(roll);
-    }
+      }, 300 / fps);
+    
+  }
 }
 
-function cleared(){
-  phe = 0;
-  atr = 0;
-  mep = 0;
-  pro = 0;
-  cim = 0;
+function start(){
+  run();
+  stopBtn.disabled = false;
 }
 
-function answer(){
-  ansIndex = document.getElementById("modaldrugs").selectedIndex
+function run() {
+  stopBtn.innerText = "Stop";
+  king = 1;
+  queen = 1;
+  m += 1;
+  imgTag.src = "images/base.png";
+  imgTag.onload = animate;
+  scroll.scrollLeft = imgWidth * n + baseWidth*(m-1);
+}
+function stop() {
+  // queen = 0;
+  king = 0;
+  if (queen == 1){
+    progress.value = 0;
+    scroll.scrollLeft = imgWidth * n + baseWidth * (m);
+  }else {
+    progress.value = 0;
+    scroll.scrollLeft = imgWidth * (n) + baseWidth * m;
+  }
+  stopBtn.disabled = true;
+}
+
+function final() {
+  unk = 1;
+  table.disabled = true;
+}
+
+function answer() {
   ans = document.getElementById("modaldrugs").value;
-  if (ans == correctAns){
+  if (ans == correctAns) {
     document.getElementById("final-body").innerHTML =
-      "Correct!\nThe correct answer is " + correctAns +".";
-  } else{
+      "Correct!\nThe correct answer is " + correctAns + ".";
+  } else {
     document.getElementById("final-body").innerHTML =
       "Wrong.\nThe right answer is " + correctAns + ".";
   }
   document.getElementById("final-save").style.display = "none";
 }
-
