@@ -1,7 +1,7 @@
 var table;
 var prince;
 var n = 0;
-var shown = 1000;
+var shown = 900;
 var imgWidth = 210;
 var imgHeight = 300;
 var king;
