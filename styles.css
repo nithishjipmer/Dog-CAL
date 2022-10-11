@@ -1,6 +1,6 @@
 body {
     overflow-x: hidden !important;
-    overflow-y: hidden;
+/*     overflow-y: hidden; */
     /* Hide horizontal scrollbar */
 }
 
