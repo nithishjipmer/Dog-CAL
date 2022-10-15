@@ -17,11 +17,11 @@ var mqls = [
     function mediaqueryresponse(mql) {
     if (mqls[0].matches) {
       // mobile
-      shown = 696;
+      shown = 700;
     }
     if (mqls[1].matches) {
       // ipad, laptops, ipad pro, ipad air
-      shown = 896;
+      shown = 900;
     }
 }
 
